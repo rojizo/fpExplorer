@@ -136,15 +136,17 @@ d3.csv("data/fp_7.csv", function(error, dataset) {
 						 1.01*d3.max(dataset, function(d) { return d['FP_2.0']; })])
 		.range([height,0]);
 
-	var rect = svg.append("rect")
+	var container = svg.append("g")
+		.call(d3.behavior.zoom().x(xScale).y(yScale).scaleExtent([1, 25]).on("zoom", redraw));
+
+	var rect = container.append("rect")
 		.attr("class", "background")
 		.attr("pointer-events", "all")
 		.attr("fill","none")
 		.attr("width", width)
-		.attr("height", height)		
-		.call(d3.behavior.zoom().x(xScale).y(yScale).scaleExtent([1, 25]).on("zoom", redraw));
+		.attr("height", height);
 		
-	var circles = svg.selectAll("circle")
+	var circles = container.selectAll("circle")
 		.data(dataset)
 		.enter()
 		.append("circle")

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Fixation probability vs. total walk count</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"><\/script>')</script>
+    
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/scatter.js"></script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>    
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    
+    <style>
+    body {
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+    
+    .axis path, .axis line {
+      fill: none;
+      stroke: rgba(0, 0, 0, 0.1);
+      shape-rendering: crispEdges; 
+    }
+    
+    .touched {
+      stroke-width: 2px;
+      stroke: #f00;
+    }
+    
+    .axis text, #colorbar .ticks {
+      font-family: sans-serif;
+      font-size: 10px;
+      fill: #666666; 
+    }
+
+    .dot {
+      fill-opacity: 0.75;
+    }
+    
+    .dot:hover {
+      fill-opacity: 1;
+      stroke-width: 1px;
+      stroke: #000;
+    }
+    
+    .node {
+      fill-opacity: 1;
+      fill: #f00;
+      stroke: #666;
+      stroke-width: 2px;
+    }
+
+    .label {
+      font-size: 14px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      font-size: 14px;
+    }
+    
+    #scatter  {
+      width: 640px;
+      display: inline-block;
+    }
+    
+    #graphContainer {
+      display: inline-block;
+      margin-left: 20px;
+      margin-top: 80px;
+    }
+    
+    #graph {
+      width:250px;
+      height: 250px;
+      border-radius: 5px;
+      background: #f9f9f9;
+      display: inline-block;
+    }
+    
+    .link {
+      fill: none;
+      stroke: #666;
+      stroke-width: 2px;
+    }
+    
+    td {
+      text-align: center;
+    }
+    
+    #graphContainer, #scatter {
+      vertical-align: top;
+    }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id='scatter'>
+      </div>
+      <table id="graphContainer">
+        <tr><td colspan="2" style="label" id="Id">Id</td></tr>
+        <tr>
+          <td colspan=2><svg id='graph'></svg></td>
+        </tr>
+        <tr><td width="50%">Degree mean</td><td id="dmean" width="50%"></td></tr>
+        <tr><td width="50%">Degree var.</td><td id="dvar" width="50%"></td></tr>
+        <tr><td width="50%"><a href="https://en.wikipedia.org/wiki/Average_path_length">\(\ell_G\)</a></td><td id="avl" width="50%"></td></tr>
+        <tr><td width="50%">Heat heterogeneity</td><td id="hh" width="50%"></td></tr>
+      </table>
+    </div>
+  </body>
+</html>

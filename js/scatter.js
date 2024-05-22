@@ -160,15 +160,29 @@ d3.csv("data/fp_7.csv", function(error, dataset) {
 			$(this).addClass("touched");
 		});
 	
+    var make_x_axis = function () {
+        return d3.svg.axis()
+                 .scale(xScale)
+                 .orient("bottom")
+                 .ticks(1)
+                 .tickSize(-height);
+    };
+
+    var make_y_axis = function () {
+        return d3.svg.axis()
+                 .scale(yScale)
+                 .orient("left")
+                 .ticks(10)
+                 .tickSize(-width);
+    };
+  
+  
+  
 	// Define X axis
-	var xAxis = d3.svg.axis()
-		.scale(xScale).orient("bottom")
-		.ticks(1).tickSize(-height);
+  var xAxis = make_x_axis();
 		
 	// Define Y axis
-	var yAxis = d3.svg.axis()
-		.scale(yScale).orient("left")
-		.ticks(10).tickSize(-width);
+	var yAxis = make_y_axis();
 		
 	// Create X axis
 	svg.append("g")
@@ -256,6 +270,16 @@ d3.csv("data/fp_7.csv", function(error, dataset) {
 			svg.select(".y.axis").call(yAxis);
 		}
 		
+svg.select(".x.grid")
+    .call(make_x_axis()
+    .tickSize(-height, 0, 0)
+    .tickFormat(""));
+svg.select(".y.grid")
+    .call(make_y_axis()
+    .tickSize(-width, 0, 0)
+    .tickFormat(""));
+    
+    
 		circles.transition().duration(0)
 			.attr("cx", function(d) {
 				return xScale(d['twc']);

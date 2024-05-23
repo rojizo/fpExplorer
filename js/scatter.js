@@ -3,15 +3,13 @@ function getEL(d) {
 	var width = 250;
 	var height = 250;
 	
-console.log(d);
-
 	// Variables
 	$("#Id").html("Graph " + d.Id);
 
 		d.rmaxUT = +d['rmaxUT'];
 		d.rmaxCT = +d['rmaxCT'];
-		d.maxUT = +d['maxUT'];
-		d.maxCT = +d['maxCT'];
+		d.maxUT = -d['maxUT'];
+		d.maxCT = -d['maxCT'];
 		d.isothermal = +d['isothermal'];
 		d.degree_std = +d['degree_std'];
 

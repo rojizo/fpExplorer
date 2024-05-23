@@ -6,12 +6,8 @@ function getEL(d) {
 	// Variables
 	$("#Id").html("Graph " + d.Id);
 
-		d.rmaxUT = +d['rmaxUT'];
-		d.rmaxCT = +d['rmaxCT'];
-		d.maxUT = -d['maxUT'];
-		d.maxCT = -d['maxCT'];
-		d.isothermal = +d['isothermal'];
-		d.degree_std = +d['degree_std'];
+	d.isothermal = +d['isothermal'];
+	d.degree_std = +d['degree_std'];
 
 
 	var dict = {maxUT: d.maxUT, rmaxUT: d.rmaxUT,
@@ -109,8 +105,8 @@ d3.csv("data/maxtimes.csv", function(error, dataset) {
 		d.Id = +d['ID'];
 		d.rmaxUT = +d['rmaxUT'];
 		d.rmaxCT = +d['rmaxCT'];
-		d.maxUT = +d['maxUT'];
-		d.maxCT = +d['maxCT'];
+		d.maxUT = -d['maxUT'];
+		d.maxCT = -d['maxCT'];
 		d.isothermal = +d['isothermal'];
 		d.degree_std = +d['degree_std'];
 	});

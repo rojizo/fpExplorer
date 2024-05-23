@@ -186,12 +186,12 @@ d3.csv("data/fp_7.csv", function(error, dataset) {
 		
 	// Create X axis
 	svg.append("g")
-		.attr("class", "axis")
+		.attr("class", "x axis")
 		.attr("transform", "translate(0," + (height) + ")")
 		.call(xAxis);
 	// Create Y axis
 	svg.append("g")
-		.attr("class", "axis")
+		.attr("class", "y axis")
 		.attr("transform", "translate(" + 0 + ",0)")
 		.call(yAxis);
 		

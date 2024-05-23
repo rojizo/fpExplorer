@@ -19,7 +19,7 @@ console.log(d);
 	var dict = {maxUT: d.maxUT, rmaxUT: d.rmaxUT,
 							maxCT: d.maxCT, rmaxCT: d.rmaxCT
 						};
-	var formater = d3.format(".3f");
+	var formater = d3.format(".12f");
 	for(key in dict)
 		$("#" + key).html(formater(dict[key]));
 	
@@ -168,7 +168,7 @@ d3.csv("data/maxtimes.csv", function(error, dataset) {
         return d3.svg.axis()
                  .scale(xScale)
                  .orient("bottom")
-                 .ticks(1)
+                 .ticks(10)
                  .tickSize(-height);
     };
 
@@ -180,8 +180,6 @@ d3.csv("data/maxtimes.csv", function(error, dataset) {
                  .tickSize(-width);
     };
   
-  
-  
 	// Define X axis
 	var xAxis = make_x_axis();
 		
@@ -190,12 +188,12 @@ d3.csv("data/maxtimes.csv", function(error, dataset) {
 		
 	// Create X axis
 	svg.append("g")
-		.attr("class", "axis")
+		.attr("class", "axis x")
 		.attr("transform", "translate(0," + (height) + ")")
 		.call(xAxis);
 	// Create Y axis
 	svg.append("g")
-		.attr("class", "axis")
+		.attr("class", "axis y")
 		.attr("transform", "translate(" + 0 + ",0)")
 		.call(yAxis);
 		
@@ -269,21 +267,22 @@ d3.csv("data/maxtimes.csv", function(error, dataset) {
 	
 	// Zoom/pan behavior:
 	function redraw() {
-		console.log("ey");
 		if (d3.event){
-			console.log("ey!!!");
 			svg.select(".x.axis").call(xAxis);
 			svg.select(".y.axis").call(yAxis);
 		}
 		
 		svg.select(".x.grid")
-		    .call(make_x_axis()
-		    .tickSize(-height, 0, 0)
-		    .tickFormat(""));
+		    .call(
+		    	make_x_axis()
+		    	.tickSize(-height, 0, 0)
+		    	.tickFormat("")
+		    	);
 		svg.select(".y.grid")
 		    .call(make_y_axis()
-		    .tickSize(-width, 0, 0)
-		    .tickFormat(""));
+		    	.tickSize(-width, 0, 0)
+		    	.tickFormat("")
+		    	);
     
 		circles.transition().duration(0)
 			.attr("cx", function(d) {

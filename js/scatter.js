@@ -212,7 +212,7 @@ d3.csv("data/maxtimes.csv", function(error, dataset) {
 		.attr("class", "title")
 		.attr("text-anchor","middle")
 		.attr("x", width/2).attr("y", -margin.top/2)
-		.text("Proliferation max times conditional vs unconditional for order 6 graphs");
+		.text("Moran max times conditional vs unconditional for order 6 graphs");
 		
 	// Add subtitle 
 	svg.append("text")
